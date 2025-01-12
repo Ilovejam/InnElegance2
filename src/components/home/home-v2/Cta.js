@@ -32,8 +32,8 @@ const Cta = () => {
           <Image
             width={650}
             height={365}
-            src="/images/about/cta-img-1.png"
-            alt="element"
+            src="https://www.villam365.com/site/sized/108081/2024/04/galle-4818528-1920_1-4000x9000.webp"
+            alt="Villa"
           />
         </div>
         <div className="container">
@@ -45,13 +45,13 @@ const Cta = () => {
             >
               <div className="cta-style2">
                 <h2 className="cta-title">
-                  Start Listing or Buying a Property With Realton
+                  Villa Kiralama İşlemlerinize Hemen Başlayın
                 </h2>
                 <p className="cta-text">
-                  Talk to our experts or Browse through more properties.
+                  Uzmanlarımızla konuşun veya daha fazla villaya göz atın.
                 </p>
-                <Link href="/contact" className="ud-btn btn-dark mt10">
-                  Learn More
+                <Link href="/about" className="ud-btn btn-dark mt10">
+                  Daha Fazla Bilgi Al
                   <i className="fal fa-arrow-right-long" />
                 </Link>
               </div>

@@ -129,29 +129,7 @@ const Home_V2 = () => {
       {/* Bitiş Şehirleri Keşfet */}
 
       {/* Daireleri Keşfet */}
-      <section className="p-0">
-        <div className="how-we-help position-relative mx-auto bgc-thm-light maxw1600 pt120 pt60-md pb90 pb30-md bdrs12 mx20-lg">
-          <div className="container">
-            <div className="row">
-              <div
-                className="col-lg-6 m-auto wow fadeInUp"
-                data-wow-delay="300ms"
-              >
-                <div className="main-title text-center">
-                  <h2 className="title">Inn Elegance Nasıl Yardımcı Olur?</h2>
-                  <p className="paragraph">
-                    Tatilinizi planlamayı kolaylaştırıyoruz.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <Explore />
-            </div>
-          </div>
-        </div>
-      </section>
+    
       {/* Bitiş Daireleri Keşfet */}
 
       {/* Hakkımızda */}
@@ -197,26 +175,7 @@ const Home_V2 = () => {
       {/* Bitiş Yorumlar */}
 
       {/* Partnerler */}
-      <section className="our-partners pt0">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 wow fadeInUp" data-wow-delay="100">
-              <div className="main-title text-center">
-                <h6>Dünyanın En İyileri Tarafından Güveniliyor</h6>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-12 text-center"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <Partner />
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Bitiş Partnerler */}
+   
 
       {/* CTA */}
       <Cta />

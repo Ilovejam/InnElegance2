@@ -9,13 +9,17 @@ const About = () => {
     <div className="row mt80 mt0-md">
       <div className="col-md-6 col-xl-6">
         <div className="position-relative">
-          <div className="img-box-7">
+          <div
+            className="img-box-7"
+            style={{ width: "591px", height: "768px", overflow: "hidden" }}
+          >
             <Image
               width={591}
               height={768}
               className="w-100 h-100 cover img-1"
-              src="/images/about/about-2.png"
-              alt="about"
+              src="https://www.villam365.com/site/sized/108081/2024/04/dsc09698-hdr-1200x9000.webp"
+              alt="Hakkımızda Görsel"
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div className="img-box-8 position-relative">
@@ -24,28 +28,32 @@ const About = () => {
               height={193}
               className="img-1 spin-right"
               src="/images/about/element-1.png"
-              alt="about"
+              alt="Hakkımızda Görsel"
             />
           </div>
-          <VideoBox />
           <div className="img-box-10 position-relative">
             <ProductSingle />
           </div>
         </div>
       </div>
-      {/* End col */}
+      {/* Sol sütun sonu */}
 
       <div className="col-md-6 col-xl-4 offset-xl-2">
         <div className="about-box-1">
-          <h2 className="title mb30">With Us Help You Find Your Dream Home</h2>
+          <h2 className="title mb30">
+            Hayalinizdeki Evi Bulmanıza Yardımcı Oluyoruz
+          </h2>
           <p className="text mb20 fz15">
-            As the complexity of buildings to increase, the field of
-            architecture.
+            Artan yapı karmaşıklığı ile birlikte mimarlık alanında yenilikçi
+            çözümler sunuyoruz.
           </p>
-          <Funfact />
+          <p className="text mb20 fz15">
+            InnElegance olarak, müşterilerimize en iyi konforu ve estetiği
+            sunmayı taahhüt ediyoruz.
+          </p>
         </div>
       </div>
-      {/* End .col */}
+      {/* Sağ sütun sonu */}
     </div>
   );
 };

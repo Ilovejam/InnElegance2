@@ -8,25 +8,25 @@ const ProductSingle = () => {
         <div className="listing-style1 mini-style bounce-y" key={product.id}>
           <div className="list-content">
             <h6 className="list-title">
-              <Link  href={`/single-v1/${product.id}`}>{product.title}</Link>
+              <Link  href={`/single-v2/${product.id}`}>{product.title}</Link>
             </h6>
             <p className="list-text">{product.location}</p>
             <div className="list-meta d-flex align-items-center">
               <a href="#">
                 <span className="flaticon-bed" />
-                {product.bed} bed
+                {product.bed}oda
               </a>
               <a href="#">
                 <span className="flaticon-shower" />
-                {product.bath} bath
+                {product.bath}banyo
               </a>
               <a href="#">
                 <span className="flaticon-expand" />
                 {product.sqft} sqft
               </a>
             </div>
-            <Link  href={`/single-v1/${product.id}`} className="btn mt15 fz15">
-              View House
+            <Link  href={`/single-v2/${product.id}`} className="btn mt15 fz15">
+              Villayı Gör
               <i className="fal fa-arrow-right-long" />
             </Link>
           </div>

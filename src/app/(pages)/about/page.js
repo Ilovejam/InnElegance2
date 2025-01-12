@@ -45,7 +45,7 @@ const About = () => {
           <div className="row" data-aos="fade-up" data-aos-delay="300">
             <div className="col-lg-6">
               <h2>
-                Gayrimenkul Alanında Devrim Yaratmak{" "}
+                Villa Kiralama Alanında{" "}
                 <br className="d-none d-lg-block" /> İçin Çalışıyoruz.
               </h2>
             </div>

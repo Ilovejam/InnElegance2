@@ -1,54 +1,63 @@
+"use client"
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const testimonials = [
   {
     id: "1st",
     imageSrc: "/images/testimonials/testi-1.png",
-    text: "What a great experience! I have visited one of the workshops and attended a masterclass, and both were super useful for young designers.",
-    name: "Ali Tufan",
-    designation: "Product Manager, Apple Inc",
+    text: "InnElegance, misafirperverliği ve profesyonel hizmetiyle beni çok etkiledi. Her şey harikaydı!",
+    name: "Ahmet Yılmaz",
+    designation: "Ürün Müdürü, Apple Türkiye",
   },
   {
     id: "2nd",
     imageSrc: "/images/testimonials/testi-2.png",
-    text: "Another fantastic testimonial! This workshop has helped me improve my design skills significantly. I'm really grateful for the opportunity.",
-    name: "Ella Johnson",
-    designation: "UX Designer, Google",
+    text: "Deniz manzaralı villada konaklama deneyimim unutulmazdı. InnElegance ekibine teşekkürler!",
+    name: "Elif Şen",
+    designation: "Tasarımcı, Google",
   },
   {
-    id: "third",
+    id: "3rd",
     imageSrc: "/images/testimonials/testi-3.png",
-    text: "What a great experience! I have visited one of the workshops and attended a masterclass, and both were super useful for young designers.",
-    name: "Ali Tufan",
-    designation: "Product Manager, Apple Inc",
+    text: "Sessiz ve huzurlu bir tatil için doğru adres! InnElegance ailesine teşekkür ederim.",
+    name: "Murat Kaya",
+    designation: "Yazılım Mühendisi, Microsoft",
   },
   {
     id: "4th",
     imageSrc: "/images/testimonials/testi-4.png",
-    text: "Another fantastic testimonial! This workshop has helped me improve my design skills significantly. I'm really grateful for the opportunity.",
-    name: "Ella Johnson",
-    designation: "UX Designer, Google",
+    text: "Villaların temizliği ve konforu beni çok memnun etti. Tatilim tam anlamıyla mükemmeldi!",
+    name: "Zeynep Demir",
+    designation: "Pazarlama Uzmanı, Amazon",
   },
   {
     id: "5th",
     imageSrc: "/images/testimonials/testi-5.png",
-    text: "Another fantastic testimonial! This workshop has helped me improve my design skills significantly. I'm really grateful for the opportunity.",
-    name: "Ella Johnson",
-    designation: "UX Designer, Google",
+    text: "InnElegance sayesinde ailemle harika bir tatil geçirdik. Kesinlikle tavsiye ederim.",
+    name: "Ali Çelik",
+    designation: "CEO, Çelik Grup",
   },
-  // Add more testimonial objects if needed
 ];
 
 const Testimonial = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 3000); // 30 saniyede bir kaydır
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div className="tab-content" id="pills-tabContent">
-        {testimonials.map((testimonial) => (
+        {testimonials.map((testimonial, index) => (
           <div
             key={testimonial.id}
             className={`tab-pane fade ${
-              testimonial.id === "2nd" ? "show active" : ""
+              index === activeIndex ? "show active" : ""
             }`}
             id={`pills-${testimonial.id}`}
             role="tabpanel"
@@ -58,8 +67,7 @@ const Testimonial = () => {
               <span className="icon fas fa-quote-left" />
               <h4 className="testi-text">{testimonial.text}</h4>
               <h6 className="name">{testimonial.name}</h6>
-              <p className="design">{testimonial.designation}</p>
-            </div>
+             </div>
           </div>
         ))}
       </div>
@@ -70,13 +78,11 @@ const Testimonial = () => {
           id="pills-tab"
           role="tablist"
         >
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <li className="nav-item" role="presentation" key={testimonial.id}>
               <button
                 className={`nav-link ${
-                  testimonial.id === "1st" ? "ps-0" : ""
-                } ${testimonial.id === "2nd" ? "active" : ""} ${
-                  testimonial.id === "5th" ? "pe-0" : ""
+                  index === activeIndex ? "active" : ""
                 }`}
                 id={`pills-${testimonial.id}-tab`}
                 data-bs-toggle="pill"
@@ -84,14 +90,10 @@ const Testimonial = () => {
                 type="button"
                 role="tab"
                 aria-controls={`pills-${testimonial.id}`}
-                aria-selected={testimonial.id === "2nd" ? "true" : "false"}
+                aria-selected={index === activeIndex ? "true" : "false"}
+                onClick={() => setActiveIndex(index)}
               >
-                <Image
-                  width={70}
-                  height={71}
-                  src={testimonial.imageSrc}
-                  alt=""
-                />
+               
               </button>
             </li>
           ))}

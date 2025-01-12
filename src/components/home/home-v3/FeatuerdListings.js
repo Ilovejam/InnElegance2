@@ -46,10 +46,10 @@ const FeaturedListings = ({cities}) => {
               <p className="list-text">{listing.location}</p>
               <div className="list-meta d-flex align-items-center">
                 <a href="#">
-                  <span className="flaticon-bed" /> {listing.bed} bed
+                  <span className="flaticon-bed" /> {listing.bed} oda
                 </a>
                 <a href="#">
-                  <span className="flaticon-shower" /> {listing.bath} bath
+                  <span className="flaticon-shower" /> {listing.bath} banyo
                 </a>
                 <a href="#">
                   <span className="flaticon-expand" /> {listing.sqft} sqft

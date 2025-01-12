@@ -120,10 +120,7 @@ const PaginationTwo = (
           </span>
         </li>
       </ul>
-      <p className="mt10 pagination_page_count text-center">
-
-        {((pageNumber - 1) * 8) + 1}-{(pageNumber * 8) >data.length ? data.length :(pageNumber * 8) } of {data.length}+ property available
-      </p>
+       
     </div>
   );
 };

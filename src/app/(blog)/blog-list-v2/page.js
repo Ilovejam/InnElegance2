@@ -47,9 +47,7 @@ const BlogV2 = () => {
               <div className="row">
                 <div className="mbp_pagination text-center">
                   <Pagination />
-                  <p className="mt10 pagination_page_count text-center">
-                    1 – 20 of 300+ property available
-                  </p>
+                   
                 </div>
               </div>
               {/* End .row */}

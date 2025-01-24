@@ -1,13 +1,18 @@
 import React from "react";
 
-const Map = () => {
+const Map = ({ onMapClick }) => {
+  // Default coordinates for Muğla, Fethiye
+  const defaultLat = 36.6514;
+  const defaultLng = 29.1235;
+
   return (
     <iframe
       className="h550"
       loading="lazy"
-      src="https://maps.google.com/maps?q=London%20Eye%2C%20London%2C%20United%20Kingdom&t=m&z=14&output=embed&iwloc=near"
-      title="London Eye, London, United Kingdom"
-      aria-label="London Eye, London, United Kingdom"
+      src={`https://maps.google.com/maps?q=${defaultLat},${defaultLng}&t=m&z=14&output=embed&iwloc=near`}
+      title="Muğla, Fethiye"
+      aria-label="Muğla, Fethiye"
+      style={{ width: '100%', border: 0 }}
     />
   );
 };

@@ -28,17 +28,17 @@ const SidebarDashboard = () => {
         {
           href: "/dashboard-add-property",
           icon: "flaticon-new-tab",
-          text: "Add New Property",
+          text: "Yeni Villa Ekle",
         },
         {
           href: "/dashboard-my-properties",
           icon: "flaticon-home",
-          text: "My Properties",
+          text: "Villa Listesi",
         },
         {
           href: "/dashboard-my-favourites",
           icon: "flaticon-like",
-          text: "My Favorites",
+          text: "Favorilerim",
         },
         {
           href: "/dashboard-saved-search",

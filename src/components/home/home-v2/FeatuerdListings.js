@@ -77,7 +77,7 @@ const FeaturedListings = () => {
                       <span className="flaticon-shower" /> {listing.bath} banyo
                     </a>
                     <a href="#">
-                      <span className="flaticon-expand" /> {listing.sqft} sqft
+                    <span className="flaticon-user" /> {Math.round(listing.bed * 1.5)} Kişi
                     </a>
                   </div>
                   <hr className="mt-2 mb-2" />

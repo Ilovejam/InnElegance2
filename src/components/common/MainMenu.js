@@ -51,6 +51,12 @@ const MainMenu = () => {
     if (pathname.includes("about")) {
       setTopMenu("about");
     }
+    if (pathname.includes("facts")) {
+      setTopMenu("facts");
+    }
+    if (pathname.includes("faq")) {
+      setTopMenu("faq");
+    }
   }, [pathname]);
 
   const handleActive = (link) => {
@@ -84,6 +90,21 @@ const MainMenu = () => {
           </span>
         </a>
       </li>
+      <li className="visible_list dropitem">
+        <a className="list-item" href="facts">
+          <span className={topMenu == "facts" ? "title menuActive" : "title"}>
+            Kiralama Şartları
+          </span>
+        </a>
+      </li>
+      <li className="visible_list dropitem">
+        <a className="list-item" href="faq">
+          <span className={topMenu == "faq" ? "title menuActive" : "title"}>
+            SSS
+          </span>
+        </a>
+      </li>
+     
     </ul>
   );
 };

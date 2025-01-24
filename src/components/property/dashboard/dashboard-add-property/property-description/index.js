@@ -1,27 +1,49 @@
 "use client";
 import Select from "react-select";
+import { usePropertyForm } from '../PropertyFormContext';
 
 const PropertyDescription = () => {
-  const catergoryOptions = [
-    { value: "Apartments", label: "Apartments" },
-    { value: "Bungalow", label: "Bungalow" },
-    { value: "Houses", label: "Houses" },
-    { value: "Loft", label: "Loft" },
-    { value: "Office", label: "Office" },
-    { value: "Townhome", label: "Townhome" },
-    { value: "Villa", label: "Villa" },
+  const { formData, updateFormData } = usePropertyForm();
+
+  const handleInputChange = (e) => {
+    updateFormData({ [e.target.name]: e.target.value });
+    // Log the updated data after each change
+    console.log("Current Step Data:", {
+      title: formData.title,
+      description: formData.description,
+      tags: formData.tags,
+      status: formData.status,
+      city: formData.city,
+      location: formData.location
+    });
+  };
+
+  const handleSelectChange = (value, action) => {
+    updateFormData({ [action.name]: value });
+    // Log after select changes too
+    console.log(`Updated ${action.name}:`, value);
+  };
+
+  const villaCategories = [
+    { value: "muhafazakar", label: "Muhafazakar Villalar" },
+    { value: "isitmali-havuzlu", label: "Isıtmalı Havuzlu Villalar" },
+    { value: "denize-yakin", label: "Denize Yakın Villalar" },
+    { value: "jakuzili", label: "Jakuzili Villalar" },
+    { value: "ekonomik", label: "Ekonomik Villalar" },
+    { value: "lux", label: "Lüks Villalar" },
+    { value: "populer", label: "Popüler Villalar" },
   ];
+
   const listedIn = [
-    { value: "All Listing", label: "All Listing" },
-    { value: "Active", label: "Active" },
-    { value: "Sold", label: "Sold" },
-    { value: "Processing", label: "Processing" },
+    { value: "active", label: "Aktif" },
+    { value: "passive", label: "Pasif" },
+    { value: "reserved", label: "Rezerve" },
   ];
-  const PropertyStatus = [
-    { value: "All Cities", label: "All Cities" },
-    { value: "Pending", label: "Pending" },
-    { value: "Processing", label: "Processing" },
-    { value: "Published", label: "Published" },
+
+  const cities = [
+    { value: "mugla-fethiye", label: "Muğla - Fethiye" },
+    { value: "antalya-kas", label: "Antalya - Kaş" },
+    { value: "kas-kalkan", label: "Kaş - Kalkan" },
   ];
 
   const customStyles = {
@@ -44,41 +66,48 @@ const PropertyDescription = () => {
       <div className="row">
         <div className="col-sm-12">
           <div className="mb20">
-            <label className="heading-color ff-heading fw600 mb10">Title</label>
+            <label className="heading-color ff-heading fw600 mb10">Villa Adı</label>
             <input
               type="text"
+              name="title"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Villa Adı"
+              value={formData.title || ''}
+              onChange={handleInputChange}
+              required
             />
           </div>
         </div>
-        {/* End .col-12 */}
 
         <div className="col-sm-12">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Description
+              Açıklama
             </label>
             <textarea
+              name="description"
+              className="form-control"
               cols={30}
               rows={5}
-              placeholder="There are many variations of passages."
-              defaultValue={""}
+              placeholder="Villa hakkında detaylı açıklama"
+              value={formData.description || ''}
+              onChange={handleInputChange}
+              required
             />
           </div>
         </div>
-        {/* End .col-6 */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Select Category
+              Villa Kategorisi
             </label>
             <div className="location-area">
               <Select
-                defaultValue={[catergoryOptions[1]]}
-                name="colors"
-                options={catergoryOptions}
+                value={formData.tags}
+                name="tags"
+                options={villaCategories}
+                onChange={handleSelectChange}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
@@ -88,91 +117,82 @@ const PropertyDescription = () => {
             </div>
           </div>
         </div>
-        {/* End .col-6 */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Listed in
+              Durum
             </label>
             <div className="location-area">
               <Select
-                defaultValue={[listedIn[1]]}
-                name="colors"
+                defaultValue={[listedIn[0]]}
+                name="status"
                 options={listedIn}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
-                isMulti
               />
             </div>
           </div>
         </div>
-        {/* End .col-6 */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb20">
             <label className="heading-color ff-heading fw600 mb10">
-              Property Status
+              Şehir
             </label>
             <div className="location-area">
               <Select
-                defaultValue={[PropertyStatus[1]]}
-                name="colors"
-                options={PropertyStatus}
+                defaultValue={[cities[0]]}
+                name="city"
+                options={cities}
                 styles={customStyles}
                 className="select-custom pl-0"
                 classNamePrefix="select"
                 required
-                isMulti
               />
             </div>
           </div>
         </div>
-        {/* End .col-6 */}
 
         <div className="col-sm-6 col-xl-4">
           <div className="mb30">
             <label className="heading-color ff-heading fw600 mb10">
-              Price in $
+              Konum
             </label>
             <input
               type="text"
+              name="location"
               className="form-control"
-              placeholder="Your Name"
+              placeholder="Örn: Esenköy, Fethiye"
+              value={formData.location || ''}
+              onChange={handleInputChange}
+              required
             />
           </div>
         </div>
-        {/* End .col-6 */}
 
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb30">
-            <label className="heading-color ff-heading fw600 mb10">
-              Yearly Tax Rate
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Your Name"
-            />
-          </div>
+        <div className="col-12">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => {
+              console.log("Step 1 Complete Data:", {
+                title: formData.title,
+                description: formData.description,
+                tags: formData.tags,
+                status: formData.status,
+                city: formData.city,
+                location: formData.location
+              });
+              // You can also add logic here to switch to the next tab
+              document.getElementById('nav-item2-tab').click();
+            }}
+          >
+            Sonraki Adım
+          </button>
         </div>
-        {/* End .col-6 */}
-
-        <div className="col-sm-6 col-xl-4">
-          <div className="mb30">
-            <label className="heading-color ff-heading fw600 mb10">
-              After Price Label
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Your Name"
-            />
-          </div>
-        </div>
-        {/* End .col-6 */}
       </div>
     </form>
   );

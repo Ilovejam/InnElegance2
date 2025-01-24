@@ -7,131 +7,80 @@ import { useState } from "react";
 
 const PropertyGallery = ({ id }) => {
   const data = listings.find((elm) => elm.id == id) || listings[0]; // ID ile veriyi çekiyoruz
-  const maxThumbnails = 2; // Görüntülemek istediğiniz maksimum thumbnail sayısı
+  const maxThumbnails = 4; // Görüntülemek istediğiniz maksimum thumbnail sayısı
 
   const [images, setImages] = useState(data.images);
 
   const handleImageError = (index) => {
-    // Eğer resim yüklenemiyorsa, varsayılan bir resimle değiştir
     const updatedImages = [...images];
-    updatedImages[index] = "/images/default-image.jpg"; // Varsayılan resim URL'sini ayarlayın
+    updatedImages[index] = "/images/default-image.jpg"; // Varsayılan resim
     setImages(updatedImages);
   };
 
   return (
     <Gallery>
-      <div className="row">
+      <div className="gallery-container">
         {/* Ana Görsel */}
-        <div className="col-md-8 mb15">
-          <div
-            className="sp-img-content"
-            style={{
-              border: "2px solid #ddd",
-              borderRadius: "8px",
-              overflow: "hidden",
-            }}
+        <div className="main-image">
+          <Item
+            original={images[0]}
+            thumbnail={images[0]}
+            width={1200}
+            height={800}
           >
-            <div className="popup-img preview-img-1 sp-img">
-              <Item
-                original={images[0]} // İlk resmi ana görsel olarak kullanıyoruz
-                thumbnail={images[0]}
+            {({ ref, open }) => (
+              <Image
+                src={images[0]}
                 width={1200}
                 height={800}
+                ref={ref}
+                onClick={open}
+                alt="Ana Görsel"
+                className="image rounded"
+                onError={() => handleImageError(0)}
+              />
+            )}
+          </Item>
+        </div>
+
+        {/* Thumbnail Görseller */}
+        <div className="thumbnails">
+          {images.slice(1, maxThumbnails + 1).map((image, index) => (
+            <div className="thumbnail" key={index}>
+              <Item
+                original={image}
+                thumbnail={image}
+                width={800}
+                height={600}
               >
                 {({ ref, open }) => (
                   <Image
-                    src={images[0]}
-                    width={800}
-                    height={500}
+                    src={image}
+                    width={300}
+                    height={200}
                     ref={ref}
                     onClick={open}
-                    alt="Ana Görsel"
-                    role="button"
-                    className="w-100 h-100 cover"
-                    onError={() => handleImageError(0)}
+                    alt={`Ek Görsel ${index + 1}`}
+                    className="image rounded"
+                    onError={() => handleImageError(index + 1)}
                   />
                 )}
               </Item>
             </div>
-          </div>
-        </div>
+          ))}
 
-        {/* Thumbnail Görseller */}
-        <div className="col-md-4 d-flex flex-column justify-content-between">
-          <div className="row">
-            {images.slice(1, maxThumbnails + 1).map((image, index) => (
-              <div
-                className="col-12 mb10"
-                key={index}
-                style={{
-                  height: "calc((500px - 20px) / 3)", // Soldaki yüksekliğe göre eşit paylaştırılmış
-                }}
-              >
-                <div
-                  className="sp-img-content"
-                  style={{
-                    border: "2px solid #ddd",
-                    borderRadius: "8px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <div
-                    className={`popup-img preview-img-${index + 2} sp-img`}
-                  >
-                    <Item
-                      original={image}
-                      thumbnail={image}
-                      width={800}
-                      height={600}
-                    >
-                      {({ ref, open }) => (
-                        <Image
-                          width={300}
-                          height={200}
-                          className="w-100 h-100 cover"
-                          ref={ref}
-                          onClick={open}
-                          role="button"
-                          src={image}
-                          alt={`Ek Görsel ${index + 1}`}
-                          onError={() =>
-                            handleImageError(index + 1) // Hata durumunda resim değiştir
-                          }
-                        />
-                      )}
-                    </Item>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Ek Görseller İçin "+ Daha Fazla" */}
+          {/* "+ Daha Fazla" */}
           {images.length > maxThumbnails + 1 && (
-            <div
-              className="col-12"
-              style={{
-                height: "calc((500px - 20px) / 3)", // Soldaki yüksekliğe göre eşit
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                border: "2px solid #ddd",
-                borderRadius: "8px",
-                backgroundColor: "#f5f5f5",
-                cursor: "pointer",
-                fontSize: "18px",
-                fontWeight: "bold",
-              }}
-            >
+            <div className="thumbnail more">
               <Item
-                original={images.slice(maxThumbnails + 1).join(", ")} // Ek görsellerin tümünü açar
+                original={images.slice(maxThumbnails + 1).join(", ")}
                 thumbnail={images[maxThumbnails]}
                 width={1200}
                 height={800}
               >
                 {({ ref, open }) => (
-                  <div ref={ref} onClick={open}>
-                    + {images.length - maxThumbnails} Daha Fazla
+                  <div ref={ref} onClick={open} className="more-text">
+                    + {images.length - maxThumbnails} Fotoğraf
                   </div>
                 )}
               </Item>
@@ -139,6 +88,70 @@ const PropertyGallery = ({ id }) => {
           )}
         </div>
       </div>
+
+      {/* CSS */}
+      <style jsx>{`
+        .gallery-container {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .main-image {
+          width: 100%;
+          aspect-ratio: 16/9;
+          overflow: hidden;
+          position: relative;
+          border-radius: 16px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .image:hover {
+          transform: scale(1.05);
+        }
+
+        .thumbnails {
+          display: flex;
+          gap: 12px;
+          justify-content: space-between;
+        }
+
+        .thumbnail {
+          flex: 1;
+          aspect-ratio: 4/3;
+          overflow: hidden;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          position: relative;
+          background-color: #f9f9f9;
+        }
+
+        .thumbnail.more {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #f0f0f0;
+          font-weight: bold;
+          color: #555;
+          cursor: pointer;
+        }
+
+        .thumbnail.more:hover {
+          background-color: #e0e0e0;
+        }
+
+        .more-text {
+          font-size: 16px;
+        }
+      `}</style>
     </Gallery>
   );
 };

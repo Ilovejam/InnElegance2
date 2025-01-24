@@ -1,13 +1,15 @@
 import React from "react";
-import PropertyDescription from "./property-description";
+import PropertyDescription from "./property-description/index";
 import UploadMedia from "./upload-media";
 import LocationField from "./LocationField";
 import DetailsFiled from "./details-field";
 import Amenities from "./Amenities";
+import PricingAndRules from "./PricingAndRules";
+import { PropertyFormProvider } from './PropertyFormContext';
 
 const AddPropertyTabContent = () => {
   return (
-    <>
+    <PropertyFormProvider>
       <nav>
         <div className="nav nav-tabs" id="nav-tab2" role="tablist">
           <button
@@ -20,7 +22,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item1"
             aria-selected="true"
           >
-            1. Description
+            1. Açıklama
           </button>
           <button
             className="nav-link fw600"
@@ -32,7 +34,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item2"
             aria-selected="false"
           >
-            2. Media
+            2. Medya
           </button>
           <button
             className="nav-link fw600"
@@ -44,7 +46,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item3"
             aria-selected="false"
           >
-            3. Location
+            3. Konum
           </button>
           <button
             className="nav-link fw600"
@@ -56,7 +58,7 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item4"
             aria-selected="false"
           >
-            4. Detail
+            4. Detaylar
           </button>
           <button
             className="nav-link fw600"
@@ -68,7 +70,19 @@ const AddPropertyTabContent = () => {
             aria-controls="nav-item5"
             aria-selected="false"
           >
-            5. Amenities
+            5. Özellikler
+          </button>
+          <button
+            className="nav-link fw600"
+            id="nav-item6-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-item6"
+            type="button"
+            role="tab"
+            aria-controls="nav-item6"
+            aria-selected="false"
+          >
+            6. Fiyatlandırma ve Kurallar
           </button>
         </div>
       </nav>
@@ -82,7 +96,7 @@ const AddPropertyTabContent = () => {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <h4 className="title fz17 mb30">Property Description</h4>
+            <h4 className="title fz17 mb30">Villa Description</h4>
             <PropertyDescription />
           </div>
         </div>
@@ -138,8 +152,20 @@ const AddPropertyTabContent = () => {
           </div>
         </div>
         {/* End tab for Select Amenities */}
+
+        <div
+          className="tab-pane fade"
+          id="nav-item6"
+          role="tabpanel"
+          aria-labelledby="nav-item6-tab"
+        >
+          <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
+            <h4 className="title fz17 mb30">Fiyatlandırma ve Kurallar</h4>
+            <PricingAndRules />
+          </div>
+        </div>
       </div>
-    </>
+    </PropertyFormProvider>
   );
 };
 

@@ -93,22 +93,21 @@ const Hero = () => {
 
       <div className="custom_thumbs">
         <Swiper
-          direction="vertical" // Dikey yön ayarlandı
+          direction="vertical"
           modules={[Thumbs]}
           watchSlidesProgress
           onSwiper={setThumbsSwiper}
-          slidesPerView={sliderItems.length} // Tüm küçük resimleri aynı anda göster
-          spaceBetween={0} // Küçük resimler arasındaki boşluk ayarlandı
-          style={{ height: "268px" }} // Küçük resimler galerisi için sabit yükseklik
+          slidesPerView={sliderItems.length}
+          spaceBetween={0}
+          style={{ height: "268px" }}
         >
           {sliderItems.map((item, index) => (
             <SwiperSlide key={index}>
-              <Image
-                width={50}
-                height={50}
+              <img
                 className="cover"
                 src={item.image}
                 alt="küçük resim"
+                style={{ width: "50px", height: "50px", objectFit: "cover" }}
               />
             </SwiperSlide>
           ))}

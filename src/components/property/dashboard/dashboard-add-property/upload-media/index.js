@@ -1,41 +1,63 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import UploadPhotoGallery from "./UploadPhotoGallery";
-import VideoOptionFiled from "./VideoOptionFiled";
 
 const UploadMedia = () => {
+  const [mainImage, setMainImage] = useState(null);
+  const [mainImagePreview, setMainImagePreview] = useState(null);
+
+  const handleMainImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setMainImage(file);
+      setMainImagePreview(URL.createObjectURL(file));
+    }
+  };
+
   return (
     <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-      <h4 className="title fz17 mb30">Upload photos of your property</h4>
+      <h4 className="title fz17 mb30">Villa Fotoğrafları</h4>
       <form className="form-style1">
         <div className="row">
           <div className="col-lg-12">
-            <UploadPhotoGallery />
-          </div>
-        </div>
-        {/* End col-12 */}
-
-        <div className="row">
-          <h4 className="title fz17 mb30">Video Option</h4>
-          <VideoOptionFiled />
-        </div>
-        {/* End .row */}
-
-        <div className="row">
-          <h4 className="title fz17 mb30">Virtual Tour</h4>
-          <div className="col-sm-6 col-xl-12">
-            <div className="mb30">
+            <div className="mb20">
               <label className="heading-color ff-heading fw600 mb10">
-                Virtual Tour
+                Ana Fotoğraf
               </label>
               <input
-                type="text"
+                type="file"
                 className="form-control"
-                placeholder="Virtual Tour"
+                accept="image/*"
+                onChange={handleMainImageChange}
+                required
               />
+              {mainImagePreview && (
+                <div className="preview-image mt10">
+                  <img 
+                    src={mainImagePreview} 
+                    alt="Ana fotoğraf önizleme" 
+                    style={{ maxWidth: '200px', height: 'auto' }}
+                  />
+                </div>
+              )}
+              <small className="text-muted">
+                Bu fotoğraf villanın ana görseli olarak kullanılacaktır.
+              </small>
+            </div>
+          </div>
+
+          <div className="col-lg-12">
+            <div className="mb20">
+              <label className="heading-color ff-heading fw600 mb10">
+                Galeri Fotoğrafları
+              </label>
+              <UploadPhotoGallery />
+              <small className="text-muted">
+                Villanın detaylı fotoğraflarını buraya yükleyebilirsiniz. Birden fazla fotoğraf seçebilirsiniz.
+              </small>
             </div>
           </div>
         </div>
-        {/* End .row */}
       </form>
     </div>
   );

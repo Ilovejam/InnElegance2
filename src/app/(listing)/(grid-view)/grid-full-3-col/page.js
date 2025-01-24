@@ -28,7 +28,7 @@ const GridFull3Col = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="breadcumb-style1">
-                <h2 className="title">Inn Elegance Villaları</h2>
+                <h2 className="title" style={{ color: '#FFD700' }}>Kiralık Villalar</h2>
               </div>
             </div>
           </div>

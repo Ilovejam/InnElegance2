@@ -1,0 +1,74 @@
+.date-range-picker-container {
+  position: relative;
+}
+
+.calendar-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.react-calendar {
+  border: none;
+  font-family: inherit;
+}
+
+.react-calendar__tile {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-date {
+  background: #1a73e8 !important;
+  color: white;
+  border-radius: 50% 0 0 50%;
+}
+
+.end-date {
+  background: #1a73e8 !important;
+  color: white;
+  border-radius: 0 50% 50% 0;
+}
+
+.in-range {
+  background-color: #e8f0fe !important;
+}
+
+.react-calendar__tile--now {
+  background: transparent;
+  color: #1a73e8;
+}
+
+.react-calendar__tile:disabled {
+  background-color: #f5f5f5;
+  color: #ccc;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: transparent;
+}
+
+.react-calendar__tile--active {
+  background: #1a73e8;
+  color: white;
+}
+
+.date-display {
+  cursor: pointer;
+  padding: 8px;
+  min-width: 200px;
+} 

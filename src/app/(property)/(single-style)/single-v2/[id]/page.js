@@ -56,6 +56,7 @@ const SingleV2 = ({params}) => {
           <div className="row mt30">
             <OverView id={params.id} />
           </div>
+         
           {/* End .row */}
         </div>
         {/* End .container */}
@@ -63,197 +64,85 @@ const SingleV2 = ({params}) => {
       {/* End Property All Single V1  */}
 
       <section className="pt60 pb90 bgc-f7">
-        <div className="container">
-          <div className="row wrap">
-            <div className="col-lg-8">
-              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Villa Hakkında</h4>
-                <ProperytyDescriptions id={params.id} />
-                {/* End property description */}
+  <div className="container">
+    <div className="row wrap">
+      {/* Left Column: Villa Hakkında, Villa Detayları, Özellikler */}
+      <div className="col-lg-8">
+        <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+          <h4 className="title fz17 mb30">Villa Hakkında</h4>
+          <ProperytyDescriptions id={params.id} />
+          {/* End property description */}
 
-                <h4 className="title fz17 mb30 mt50">Villa Detayları</h4>
-                <div className="row">
-                  <PropertyDetails id={params.id} />
-                </div>
-              </div>
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30 mt30">Address</h4>
-                <div className="row">
-                  <PropertyAddress />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Özellikler &amp; Olanaklar</h4>
-                <div className="row">
-                  <PropertyFeaturesAminites id={params.id} />
-                </div>
-              </div>
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Energy Class</h4>
-                <div className="row">
-                  <EnergyClass />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Floor Plans</h4>
-                <div className="row">
-                  <div className="col-md-12">
-                    <div className="accordion-style1 style2">
-                      <FloorPlans />
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 ">
-                <h4 className="title fz17 mb30">Video</h4>
-                <div className="row">
-                  <PropertyVideo />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">360° Virtual Tour</h4>
-                <div className="row">
-                  <VirtualTour360 />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">What&apos;s Nearby?</h4>
-                <div className="row">
-                  <PropertyNearby />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Walkscore</h4>
-                <div className="row">
-                  <div className="col-md-12">
-                    <h4 className="fw400 mb20">
-                      10425 Tabor St Los Angeles CA 90034 USA
-                    </h4>
-                    <WalkScore />
-                  </div>
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Mortgage Calculator</h4>
-                <div className="row">
-                  <MortgageCalculator />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <div className="row">
-                  <PropertyViews />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Home Value</h4>
-                <div className="row">
-                  <HomeValueChart />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Get More Information</h4>
-                <InfoWithForm />
-              </div> */}
-              {/* End .ps-widget */}
-
-               
-               
-              {/* End .ps-widget */}
-
-              {/* <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
-                <h4 className="title fz17 mb30">Leave A Review</h4>
-                <div className="row">
-                  <ReviewBoxForm />
-                </div>
-              </div> */}
-              {/* End .ps-widget */}
-            </div>
-            {/* End .col-8 */}
-
-            {/* <div className="col-lg-4">
-              <div className="column">
-                <div className="default-box-shadow1 bdrs12 bdr1 p30 mb30-md bgc-white position-relative">
-                  <h6 className="title fz17 mb30">Get More Information</h6>
-                  <ContactWithAgent />
-                  <ScheduleForm />
-                </div>
-              </div>
-            </div> */}
-          </div>
-          {/* End .row */}
-
-          <div className="row mt30 align-items-center justify-content-between">
-            <div className="col-auto">
-              <div className="main-title">
-                <h2 className="title">Discover Our Featured Listings</h2>
-                <p className="paragraph">
-                  Aliquam lacinia diam quis lacus euismod
-                </p>
-              </div>
-            </div>
-            {/* End header */}
-
-            <div className="col-auto mb30">
-              <div className="row align-items-center justify-content-center">
-                <div className="col-auto">
-                  <button className="featured-prev__active swiper_button">
-                    <i className="far fa-arrow-left-long" />
-                  </button>
-                </div>
-                {/* End prev */}
-
-                <div className="col-auto">
-                  <div className="pagination swiper--pagination featured-pagination__active" />
-                </div>
-                {/* End pagination */}
-
-                <div className="col-auto">
-                  <button className="featured-next__active swiper_button">
-                    <i className="far fa-arrow-right-long" />
-                  </button>
-                </div>
-                {/* End Next */}
-              </div>
-              {/* End .col for navigation and pagination */}
-            </div>
-            {/* End .col for navigation and pagination */}
-          </div>
-          {/* End .row */}
-
+          <h4 className="title fz17 mb30 mt50">Villa Detayları</h4>
           <div className="row">
-            <div className="col-lg-12">
-              <div className="property-city-slider">
-                <NearbySimilarProperty />
-              </div>
-            </div>
+            <PropertyDetails id={params.id} />
           </div>
-          {/* End .row */}
         </div>
-      </section>
+        {/* End .ps-widget */}
+
+        <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+          <h4 className="title fz17 mb30">Özellikler &amp; Olanaklar</h4>
+          <div className="row">
+            <PropertyFeaturesAminites id={params.id} />
+          </div>
+        </div>
+      </div>
+      {/* End .col-lg-8 */}
+
+      {/* Right Column: Yorumlar */}
+      <div className="col-lg-4">
+        <div className="ps-widget bgc-white bdrs12 default-box-shadow2 p30 mb30 overflow-hidden position-relative">
+          <h4 className="title fz17 mb30">Uygunluk</h4>
+          <ReviewBoxForm 
+            id={params.id} 
+          />
+        </div>
+      </div>
+      {/* End .col-lg-4 */}
+    </div>
+    {/* End .row */}
+
+    <div className="row mt30 align-items-center justify-content-between">
+      <div className="col-auto">
+        <div className="main-title">
+          <h2 className="title">Discover Our Featured Listings</h2>
+          <p className="paragraph">Aliquam lacinia diam quis lacus euismod</p>
+        </div>
+      </div>
+      {/* End header */}
+
+      <div className="col-auto mb30">
+        <div className="row align-items-center justify-content-center">
+          <div className="col-auto">
+            <button className="featured-prev__active swiper_button">
+              <i className="far fa-arrow-left-long" />
+            </button>
+          </div>
+
+          <div className="col-auto">
+            <div className="pagination swiper--pagination featured-pagination__active" />
+          </div>
+
+          <div className="col-auto">
+            <button className="featured-next__active swiper_button">
+              <i className="far fa-arrow-right-long" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="row">
+      <div className="col-lg-12">
+        <div className="property-city-slider">
+          <NearbySimilarProperty />
+        </div>
+      </div>
+    </div>
+    {/* End .row */}
+  </div>
+</section>
+
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">

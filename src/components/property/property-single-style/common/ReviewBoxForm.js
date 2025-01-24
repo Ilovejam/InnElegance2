@@ -40,20 +40,22 @@ const BookingCalendar = ({ id }) => {
   const calculatePrice = () => {
     if (checkInDate && checkOutDate) {
       const days = Math.ceil((checkOutDate - checkInDate) / (1000 * 3600 * 24));
-      console.log('Number of days:', days); // Debug log
-      
-      // Calculate base price for adults
-      const adultPrice = days * dailyRate * adults;
-      // Calculate price for children (50% of adult rate)
-      const childrenPrice = days * (dailyRate / 2) * children;
-      // Total price
-      const price = adultPrice + childrenPrice;
-      
-      console.log('Adult Price:', adultPrice); // Debug log
-      console.log('Children Price:', childrenPrice); // Debug log
-      console.log('Total Price:', price); // Debug log
-      
-      setTotalPrice(price > 0 ? price : 0);
+  
+      if (days < 4) {
+        setTotalPrice(0); // Set total price to 0 to trigger the message
+        setShowSummary(true);
+        return;
+      }
+  
+      let totalPrice = 0;
+  
+      if (days >= 4 && days <= 7) {
+        totalPrice = dailyRate * days + 2500; // Add cleaning price
+      } else if (days > 7) {
+        totalPrice = dailyRate * days;
+      }
+  
+      setTotalPrice(totalPrice);
       setShowSummary(true);
     }
   };
@@ -153,24 +155,33 @@ const BookingCalendar = ({ id }) => {
         {showSummary && (
           <div className="booking-summary">
             <h4>Rezervasyon Özeti</h4>
-            <p>Giriş Tarihi: {checkInDate.toLocaleDateString('tr-TR')}</p>
-            <p>Çıkış Tarihi: {checkOutDate.toLocaleDateString('tr-TR')}</p>
-            <p>Misafirler: {adults} Yetişkin, {children} Çocuk</p>
-            <p>
-              Günlük Fiyat:{" "}
-              <strong>{dailyRate.toLocaleString("tr-TR", { style: "currency", currency: "TRY" })}</strong>
-            </p>
-            <p>
-              Toplam Gün: {checkInDate && checkOutDate ? 
-                Math.ceil((checkOutDate - checkInDate) / (1000 * 3600 * 24)) : 0}
-            </p>
-            <p>
-              Toplam:{" "}
-              <strong>{totalPrice.toLocaleString("tr-TR", { style: "currency", currency: "TRY" })}</strong>
-            </p>
-            <button type="submit" className="ud-btn btn-success w-100">
-              Rezervasyonu Onayla
-            </button>
+            {totalPrice === 0 ? (
+              <p>Minimum kiralama süresi 2 gündür.</p>
+            ) : (
+              <>
+                <p>Giriş Tarihi: {checkInDate.toLocaleDateString('tr-TR')}</p>
+                <p>Çıkış Tarihi: {checkOutDate.toLocaleDateString('tr-TR')}</p>
+                <p>Misafirler: {adults} Yetişkin, {children} Çocuk</p>
+                <p>
+                  Günlük Fiyat:{" "}
+                  <strong>{dailyRate.toLocaleString("tr-TR", { style: "currency", currency: "TRY" })}</strong>
+                </p>
+                {totalPrice > dailyRate * Math.ceil((checkOutDate - checkInDate) / (1000 * 3600 * 24)) && (
+                 <p>Temizlik Ücreti: <strong>{(2500).toLocaleString("tr-TR", { style: "currency", currency: "TRY" })}</strong></p>
+                )}
+                <p>
+                  Toplam Gün: {checkInDate && checkOutDate ? 
+                    Math.ceil((checkOutDate - checkInDate) / (1000 * 3600 * 24)) : 0}
+                </p>
+                <p>
+                  Toplam:{" "}
+                  <strong>{totalPrice.toLocaleString("tr-TR", { style: "currency", currency: "TRY" })}</strong>
+                </p>
+                <button type="submit" className="ud-btn btn-success w-100">
+                  Rezervasyonu Onayla
+                </button>
+              </>
+            )}
           </div>
         )}
       </form>

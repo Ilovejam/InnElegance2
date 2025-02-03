@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Villa Feel",
+        "location": "Kalkan Kiralık Villa / Üzümlü Köyü",
+        "capacity": 6,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "price_per_night": "5.500₺ - 13.500₺",
+        "images": [
+            "https://cdn.villacim.com.tr/uploads/3840/villa-feel-3_1920x1280_847.jpg"
+        ]
+    },
+    {
+        "name": "Villa Yavuz",
+        "location": "Kalkan Kiralık Villa / Üzümlü Köyü",
+        "capacity": 4,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "price_per_night": "4.000₺ - 10.000₺",
+        "images": [
+            "https://cdn.villacim.com.tr/uploads/3840/villa-yavuz-53_384.jpg"
+        ]
+    },
+    {
+        "name": "Villa Zakkum",
+        "location": "Fethiye Kiralık Villa / Ovacık",
+        "capacity": 5,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "price_per_night": "3.500₺ - 11.950₺",
+        "images": [
+            "https://cdn.villacim.com.tr/uploads/3840/villa-zakkum00020_205.jpg"
+        ]
+    }
+]
